@@ -2,6 +2,7 @@ var canvasWidth = 1200;
 var canvasHeight = 700;
 var mouseX = 0.0;
 var mouseY = 0.0;
+var acc=0;
 
 var player = {
   x: (canvasWidth * 0.5),
@@ -51,9 +52,44 @@ var background = {
   },
 
   render: function () {
+    
     var background = new Image()
     background.src = "/Users/cesar/code/Ironhack/project-1-Game/Traveller/img/background.png"
-    ctx.drawImage(background, this.x, this.y, 1200, 700)
+    ctx.drawImage(background, this.x, this.y, 1200, 700);
+    for(var i=0; i<11;i++){
+      for(var j=0; j<11;j++){
+        // ctx.drawImage(background, this.x-canvasWidth*2, this.y, 1200, 700);
+        // ctx.drawImage(background, this.x+canvasWidth*2, this.y, 1200, 700);
+        // ctx.drawImage(background, this.x, this.y-canvasHeight*2, 1200, 700);
+        // ctx.drawImage(background, this.x, this.y+canvasHeight*2, 1200, 700);
+        ctx.drawImage(background, this.x-canvasWidth*i, this.y-canvasHeight*j, 1200, 700);
+        ctx.drawImage(background, this.x-canvasWidth*i, this.y+canvasHeight*j, 1200, 700);
+        ctx.drawImage(background, this.x+canvasWidth*i, this.y-canvasHeight*j, 1200, 700);
+        ctx.drawImage(background, this.x+canvasWidth*i, this.y+canvasHeight*j, 1200, 700);
+      }
+    }
+    
+    
+    
+    
+    // ctx.drawImage(background, this.x, this.y, 1200, 700);
+    // ctx.drawImage(background, this.x-canvasWidth, this.y, 1200, 700);
+    // ctx.drawImage(background, this.x-canvasWidth*2, this.y, 1200, 700);
+    // ctx.drawImage(background, this.x+canvasWidth, this.y, 1200, 700);
+    // ctx.drawImage(background, this.x+canvasWidth*2, this.y, 1200, 700);
+    // ctx.drawImage(background, this.x, this.y-canvasHeight, 1200, 700);
+    // ctx.drawImage(background, this.x, this.y-canvasHeight*2, 1200, 700);
+    // ctx.drawImage(background, this.x, this.y+canvasHeight, 1200, 700);
+    // ctx.drawImage(background, this.x, this.y+canvasHeight*2, 1200, 700);
+
+    // ctx.drawImage(background, this.x-canvasWidth, this.y-canvasHeight, 1200, 700);
+    // ctx.drawImage(background, this.x-canvasWidth*2, this.y-canvasHeight*2, 1200, 700);
+    // ctx.drawImage(background, this.x-canvasWidth, this.y+canvasHeight, 1200, 700);
+    // ctx.drawImage(background, this.x-canvasWidth*2, this.y+canvasHeight*2, 1200, 700);
+    // ctx.drawImage(background, this.x+canvasWidth, this.y-canvasHeight, 1200, 700);
+    // ctx.drawImage(background, this.x+canvasWidth*2, this.y-canvasHeight*2, 1200, 700);
+    // ctx.drawImage(background, this.x+canvasWidth, this.y+canvasHeight, 1200, 700);
+    // ctx.drawImage(background, this.x+canvasWidth*2, this.y+canvasHeight*2, 1200, 700);
   }
 };
 
