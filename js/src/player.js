@@ -9,7 +9,6 @@ var player = {
 
   tick: function () {
     this.angle = Math.atan2(mouseY - canvasHeight*0.5, mouseX - canvasWidth*0.5);
-    console.log(this.angle)
     this.x -= this.dx;
     this.y -= this.dy;
     if (this.x > 11000) {

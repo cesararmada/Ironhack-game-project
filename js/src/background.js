@@ -3,7 +3,9 @@ var canvasHeight = 700;
 var mouseX = 0.0;
 var mouseY = 0.0;
 var base = 10.00;
-
+var enemies = [];
+var num=0;
+var numy=0;
 var background = {
   x: 0,
   y: 0,
