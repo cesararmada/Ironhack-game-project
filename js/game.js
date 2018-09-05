@@ -1,5 +1,3 @@
-
-
 var loop = function loop() {
   num = Math.floor(Math.random() * 12000) + 1;
   num *= Math.floor(Math.random() * 2) == 1 ? 1 : -1;
@@ -7,15 +5,28 @@ var loop = function loop() {
   numy *= Math.floor(Math.random() * 2) == 1 ? 1 : -1;
   background.tick()
   player.tick();
-  blackhole.tick();
+  blackholeObj.tick();
+  gasPlanetObj.tick();
   background.render()
-  blackhole.render();
+  blackholeObj.render();
+  gasPlanetObj.render();
+  nebulaObj.render();
   player.render();
   bullets();
-  requestAnimationFrame(loop);
   createRandomEnemies();
   createFixedEnemies();
   collisionOccurs();
+  if (hit_delay > 0) {
+    hit_delay -= 1;
+  }
+  $('#score').text("Score: " + score);
+  $('#coordx').text("X: " + Math.floor(player.x));
+  $('#coordy').text("Y: " + Math.floor(player.y));
+
+
+
+
+  requestAnimationFrame(loop);
 }
 
 window.onload = function () {
@@ -25,4 +36,6 @@ window.onload = function () {
   bounds = canvas.getBoundingClientRect();
   ctx = canvas.getContext("2d");
   loop();
+
+
 }

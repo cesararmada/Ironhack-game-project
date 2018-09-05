@@ -1,25 +1,3 @@
-var bullet = {
-  x: (canvasWidth * 0.5),
-  y: (canvasHeight * 0.5),
-  dx: 0.0,
-  dy: 0.0,
-  radius: 5.0,
-
-  tick: function () {
-    this.x += this.dx;
-    this.y += this.dy;
-  },
-
-  render: function () {
-    ctx.fillStyle = "darkcyan";
-    ctx.strokeStyle = "white";
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.radius, 0.0, 2.0 * Math.PI, false);
-    ctx.fill();
-    ctx.stroke();
-  }
-};
-
 function Bullet(dx, dy) {
   this.active = true;
   this.color = "yellow";
@@ -31,9 +9,9 @@ function Bullet(dx, dy) {
   this.dy = dy;
   this.radius = 4.0;
 }
-Bullet.prototype.inBounds = function() {
+Bullet.prototype.inBounds = function () {
   return this.x >= -13000 && this.x <= 13000 &&
-         this.y >= -8000 && this.y <= 8000;  
+    this.y >= -8000 && this.y <= 8000;
 };
 
 Bullet.prototype.draw = function () {
@@ -45,8 +23,7 @@ Bullet.prototype.draw = function () {
   ctx.stroke();
 };
 
-Bullet.prototype.update = function () {
-  console.log(this.x)
+Bullet.prototype.render = function () {
   this.x += this.dx;
   this.y += this.dy
   this.active = this.active && this.inBounds();
@@ -60,7 +37,7 @@ Bullet.prototype.die = function () {
 var bullets = function () {
 
   bulletArr.forEach(function (bullet) {
-    bullet.update();
+    bullet.render();
   });
 
   bulletArr = bulletArr.filter(function (bullet) {
