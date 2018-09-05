@@ -1,0 +1,14 @@
+var playership1 = "/Users/cesar/code/Ironhack/project-1-Game/Traveller/img/spaceship_sprite.png";
+var enemyRound = "/Users/cesar/code/Ironhack/project-1-Game/Traveller/img/enemyround.png";
+var background1 = "/Users/cesar/code/Ironhack/project-1-Game/Traveller/img/background.png";
+var canvasWidth = 1200;
+var canvasHeight = 700;
+var mouseX = 0.0;
+var mouseY = 0.0;
+var base = 10.00;
+var enemies = [];
+var fixedEnemies = [];
+var bulletArr = [];
+var num=0;
+var numy=0;
+var score =0;

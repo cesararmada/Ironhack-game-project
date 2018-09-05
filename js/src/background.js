@@ -1,11 +1,4 @@
-var canvasWidth = 1200;
-var canvasHeight = 700;
-var mouseX = 0.0;
-var mouseY = 0.0;
-var base = 10.00;
-var enemies = [];
-var num=0;
-var numy=0;
+
 var background = {
   x: 0,
   y: 0,
@@ -24,7 +17,7 @@ var background = {
   render: function () {
 
     var background = new Image()
-    background.src = "/Users/cesar/code/Ironhack/project-1-Game/Traveller/img/background.png"
+    background.src = background1;
     ctx.drawImage(background, this.x, this.y, 1200, 700);
 
     for (var i = 0; i < 11; i++) {
