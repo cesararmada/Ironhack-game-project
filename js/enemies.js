@@ -68,10 +68,11 @@ FixedEnemy.prototype.render = function () {
 
 FixedEnemy.prototype.die = function () {
   this.active = false;
-  score += 10;
+  score += 20;
 };
 
-function Enemy() {
+function Enemy(game) {
+  this.game = game;
   this.active = true;
   this.img = new Image();
   this.img.src = enemyRound;
@@ -94,10 +95,10 @@ Enemy.prototype.draw = function () {
 };
 
 Enemy.prototype.render = function () {
-  if (Math.abs(player.y - this.y) < 200) {
-    if ((player.x - this.x) > 0) {
+  if (Math.abs(this.game.player.y - this.y) < 200) {
+    if ((this.game.player.x - this.x) > 0) {
       this.dx = 2;
-    } else if ((player.x - this.x) < 0) {
+    } else if ((this.game.player.x - this.x) < 0) {
       this.dx = -2;
     } else {
       this.dx = 0;
@@ -112,40 +113,3 @@ Enemy.prototype.die = function () {
   this.active = false;
   score += 10;
 };
-
-var createRandomEnemies = function () {
-  if (Math.random() < 0.8) {
-    enemies.push(new Enemy());
-  }
-  enemies.forEach(function (enemy) {
-    enemy.render();
-  });
-
-  enemies = enemies.filter(function (enemy) {
-    return enemy.active;
-  })
-
-  enemies.forEach(function (enemy) {
-    enemy.draw();
-  })
-}
-var createFixedEnemies = function () {
-  var max = 20 - fixedEnemies.length
-  if (fixedEnemies.length < 20) {
-    for (var i = 0; i <= max; i++) {
-      fixedEnemies.push(new FixedEnemy(enemyRound, -3000 - i * 100, -1000, 600, 5, "square"))
-      fixedEnemies.push(new FixedEnemy(ufoSrc, 0 - i * 100, 0, 1000, 5, "circle"));
-    }
-  }
-  fixedEnemies.forEach(function (fixedEnemy) {
-    fixedEnemy.render();
-  });
-
-  fixedEnemies = fixedEnemies.filter(function (fixedEnemy) {
-    return fixedEnemy.active;
-  })
-
-  fixedEnemies.forEach(function (fixedEnemy) {
-    fixedEnemy.draw();
-  })
-}
