@@ -5,7 +5,7 @@ function Background(x, y, width, heigth) {
   this.dy = 0.0;
   this.width = width;
   this.heigth = heigth;
-  this.radius = 5.0;
+  
 };
 
 

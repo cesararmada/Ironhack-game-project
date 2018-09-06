@@ -1,4 +1,4 @@
-function FixedEnemy(img, x, y, distance, vel, type) {
+function FixedEnemy(img, x, y, distance, vel, type, inx, iny) {
   this.type = type
   this.active = true;
   this.img = new Image();
@@ -12,16 +12,16 @@ function FixedEnemy(img, x, y, distance, vel, type) {
   this.width = 40;
   this.height = 40;
   this.timer = 0;
-  this.initialX = x;
-  this.initialY = y;
+  this.initialX = inx;
+  this.initialY = iny;
   this.distance = distance;
   this.vel = vel;
   if (this.type == "circle") {
     this.circle = {
-      centerX: 250,
-      centerY: 250,
-      radius: 250,
-      angle: 0
+      centerX: x,
+      centerY: y,
+      radius: distance,
+      angle: vel,
     };
     this.x = this.circle.centerX + Math.cos(this.circle.angle) * this.circle.radius;
     this.y = this.circle.centerY + Math.sin(this.circle.angle) * this.circle.radius;
@@ -40,24 +40,25 @@ FixedEnemy.prototype.draw = function () {
 
 FixedEnemy.prototype.render = function () {
   if (this.type == "circle") {
-    this.circle.angle += 0.05;
+    this.circle.angle += 0.03;
     this.x = this.circle.centerX + Math.cos(this.circle.angle) * this.circle.radius;
     this.y = this.circle.centerY + Math.sin(this.circle.angle) * this.circle.radius;
   }
   if (this.type == "square") {
-    if (this.initialX == this.x && this.y == this.initialY) {
+
+    if (this.x== this.x && this.y == this.initialY) {
       this.dx = this.vel, this.dy = 0;
     }
-    if (this.x == fixedEnemies[0].initialX && this.y == fixedEnemies[0].initialY) {
+    if (this.x == this.initialX && this.y == this.initialY) {
       this.dx = this.vel, this.dy = 0;
     }
-    if (this.x == fixedEnemies[0].initialX + this.distance && this.y == fixedEnemies[0].initialY) {
+    if (this.x == this.initialX + this.distance && this.y == this.initialY) {
       this.dx = 0, this.dy = this.vel;
     }
-    if (this.y == fixedEnemies[0].initialY + this.distance && this.x == fixedEnemies[0].initialX + this.distance) {
+    if (this.y == this.initialY + this.distance && this.x == this.initialX + this.distance) {
       this.dx = -this.vel, this.dy = 0;
     }
-    if (this.x == fixedEnemies[0].initialX && this.y == fixedEnemies[0].initialY + this.distance) {
+    if (this.x == this.initialX && this.y == this.initialY + this.distance) {
       this.dx = 0, this.dy = -this.vel;
     }
     this.x += this.dx;

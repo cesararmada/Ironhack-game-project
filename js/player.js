@@ -1,12 +1,12 @@
 
 function Player() {
-  var HP = 6;
+  this.hp = 6;
   this.vel = true;
   this.getHP = function () {
-    return HP;
+    return this.hp;
   };
   this.getHit = function () {
-    HP -= 1;
+    this.hp -= 1;
     hit_delay = 100;
     if (this.getHP() == 5) {
       $('#health-6').addClass("hidden");
@@ -25,6 +25,8 @@ function Player() {
     }
     if (this.getHP() == 0) {
       $('#health-1').addClass("hidden");
+      gameOver = true;
+      
     }
   };
 
@@ -37,20 +39,6 @@ function Player() {
   this.dy = 0.0;
   this.angle = 0.0;
 }
-
-Player.prototype.draw = function () {
-  if (hit_delay > 0) {
-    if (Math.sin(hit_delay) > 0) {
-      ctx.fillStyle = "red";
-    } else {
-      ctx.fillStyle = this.color;
-    }
-  } else {
-    ctx.fillStyle = this.color;
-  }
-  ctx.fillRect(this.x, this.y, this.width, this.height);
-};
-
 
 Player.prototype.tick = function () {
   this.angle = Math.atan2(mouseY - canvasHeight * 0.5, mouseX - canvasWidth * 0.5);
