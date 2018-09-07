@@ -90,7 +90,7 @@ Game.prototype.createEnemies = function () {
 Game.prototype.fixedEnemiesCreator = function () {
   for (var i = 0; i < 20; i++) {
     fixedEnemies.push(new FixedEnemy(ufoSrc, -3000 - i * 100, -1000, 600, 6, "square", -3000, -1000))
-    fixedEnemies.push(new FixedEnemy(ufoSrc, -6000 - i * 100, 3000, 400, 2, "square", -6000, 3000))
+    fixedEnemies.push(new FixedEnemy(ufoSrc, -6000 - i * 100, 3000, 400, 5, "square", -6000, 3000))
     fixedEnemies.push(new FixedEnemy(ufoSrc, 2000 - i * 100, 2000, 400, 7, "square", 2000, 2000))
     fixedEnemies.push(new FixedEnemy(ufoSrc, 6000 - i * 100, -3000, 900, 5, "square", 6000, -3000))
     fixedEnemies.push(new FixedEnemy(ufoSrc, 9000 - i * 100, 0, 500, 1, "square", 9000, 0))
@@ -102,7 +102,7 @@ Game.prototype.fixedEnemiesCreator = function () {
   }
 }
 Game.prototype.objectCreator = function () {
-  objArray.push(new ObjectConstr(5000, 2000, 2800, 2000, 0.1, blackHoleSrc))
+  objArray.push(new ObjectConstr(10000, 5000, 2800, 2000, 0.1, blackHoleSrc))
   objArray.push(new ObjectConstr(-10000, 5000, 2000, 2000, 0.1, blackHoleSrc))
   objArray.push(new ObjectConstr(-5000, -2000, 2000, 2000, 0.05, gasPlanetSrc));
   objArray.push(new ObjectConstr(5500, -3000, 2000, 2000, 0.05, bluePlanetSrc));
