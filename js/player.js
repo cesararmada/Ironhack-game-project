@@ -1,4 +1,3 @@
-
 function Player() {
   this.hp = 6;
   this.vel = true;
@@ -26,7 +25,7 @@ function Player() {
     if (this.getHP() == 0) {
       $('#health-1').addClass("hidden");
       gameOver = true;
-      
+
     }
   };
 
@@ -101,33 +100,33 @@ Player.prototype.stop = function () {
   var l = Math.sqrt(x * x + y * y);
   x = x / l;
   y = y / l;
-  if(this.vel == false){
-  var self=this
-  setTimeout(function () {
-    self.dx = -(x * 8);
-    self.dy = -(y * 8);
+  if (this.vel == false) {
+    var self = this
+    setTimeout(function () {
+      self.dx = -(x * 8);
+      self.dy = -(y * 8);
 
-  }, 200);
-  setTimeout(function () {
-    self.dx = -(x * 6);
-    self.dy = -(y * 6);
+    }, 80);
+    setTimeout(function () {
+      self.dx = -(x * 6);
+      self.dy = -(y * 6);
 
-  }, 400);
-  setTimeout(function () {
-    self.dx = -(x * 4);
-    self.dy = -(y * 4);
+    }, 160);
+    setTimeout(function () {
+      self.dx = -(x * 4);
+      self.dy = -(y * 4);
 
-  }, 600);
-  setTimeout(function () {
-    self.dx = -(x * 2);
-    self.dy = -(y * 2);
+    }, 240);
+    setTimeout(function () {
+      self.dx = -(x * 2);
+      self.dy = -(y * 2);
 
-  }, 800);
-  setTimeout(function () {
-    self.dx = 0;
-    self.dy = 0;
+    }, 320);
+    setTimeout(function () {
+      self.dx = 0;
+      self.dy = 0;
 
-  }, 1000);
+    }, 400);
   }
 }
 
@@ -176,5 +175,3 @@ Player.prototype.collisionOccurs = function () {
     }
   }.bind(this));
 }
-
-

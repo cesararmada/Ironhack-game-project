@@ -70,6 +70,10 @@ FixedEnemy.prototype.render = function () {
 FixedEnemy.prototype.die = function () {
   this.active = false;
   score += 20;
+  this.sound = explosion.play();
+  this.sound = explosion.currentTime = 0;
+  this.img.src = explosionSrc;
+  ctx.drawImage(this.img, this.x, this.y, this.width*2, this.height*2);
 };
 
 function Enemy(game) {
@@ -113,4 +117,9 @@ Enemy.prototype.render = function () {
 Enemy.prototype.die = function () {
   this.active = false;
   score += 10;
+  this.sound = explosion.play();
+  this.sound = explosion.currentTime = 0;
+  this.img.src = explosionSrc;
+  ctx.drawImage(this.img, this.x, this.y, this.width*2, this.height*2);
+  
 };

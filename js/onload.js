@@ -4,12 +4,21 @@ window.onload = function () {
   canvas.height = canvasHeight;
   bounds = canvas.getBoundingClientRect();
   ctx = canvas.getContext("2d");
-  
-  ctx.fillStyle = 'green'
-  ctx.fillRect(0, 0, 1200, 700)
+
+  var screen = new Image()
+  screen.onload = function () {
+    ctx.drawImage(screen, 0, 0, 1200, 700)
+
+  }
+  screen.src = startImgSrc;
+
 
 
   window.onmousedown = function (e) {
+    if (gameStart == true) {
+      this.sound = lasersound.play();
+      this.sound = lasersound.currentTime = 0;
+    }
     var x = mouseX - canvasWidth * 0.5;
     var y = mouseY - canvasHeight * 0.5;
     var l = Math.sqrt(x * x + y * y);
@@ -25,12 +34,13 @@ window.onload = function () {
     switch (e.keyCode) {
       case 87:
         game.player.move();
+        this.sound = engine.play();
         break;
       case 32:
         game.player.accelerate();
         break;
       case 13:
-      
+
         if (gameStart == false) {
           main.game = new Game;
           game.gameStart()
@@ -44,6 +54,9 @@ window.onload = function () {
     switch (e.keyCode) {
       case 87:
         game.player.stop();
+        this.sound = engine.pause()
+        this.sound = engine.currentTime = 0;
+        engine.volume = 0.2;
         break;
       case 32:
         game.player.decelerate();
