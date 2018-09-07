@@ -13,7 +13,6 @@ window.onload = function () {
   screen.src = startImgSrc;
 
 
-
   window.onmousedown = function (e) {
     if (gameStart == true) {
       this.sound = lasersound.play();
@@ -31,38 +30,39 @@ window.onload = function () {
   }
 
   document.onkeydown = function (e) {
-    switch (e.keyCode) {
-      case 87:
-        game.player.move();
-        this.sound = engine.play();
-        break;
-      case 32:
-        game.player.accelerate();
-        break;
-      case 13:
+    if (e.keyCode == 87) {
+      keys["w"] = true;
+      
+    } else if (e.keyCode == 32) {
 
-        if (gameStart == false) {
-          main.game = new Game;
-          game.gameStart()
-          ctx.setTransform(1, 0, 0, 1, 0, 0)
-        };
-        break;
-
+      keys["space"] = true;
+    } else if (e.keyCode == 13) {
+      if (gameStart == false) {
+        main.game = new Game;
+        game.gameStart()
+        ctx.setTransform(1, 0, 0, 1, 0, 0)
+      };
     }
+    
   };
   document.onkeyup = function (e) {
-    switch (e.keyCode) {
-      case 87:
-        game.player.stop();
-        this.sound = engine.pause()
-        this.sound = engine.currentTime = 0;
-        engine.volume = 0.2;
-        break;
-      case 32:
-        game.player.decelerate();
-        break;
+
+    if (e.keyCode == 87) {
+      keys["w"] = false;
+    } else if (e.keyCode == 32) {
+      keys["space"] = false;
+    }
+
+    if (keys["w"] == false) {
+      game.player.stop();
+      this.sound = engine.pause()
+      this.sound = engine.currentTime = 0;
+    } else if (keys["space"] == false) {
+      game.player.decelerate();
+
 
     }
+    
   };
 
   window.onmousemove = function (e) {

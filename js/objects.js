@@ -9,7 +9,6 @@ var ObjectConstr = function (x, y, width, heigth, angle, img) {
 };
 
 ObjectConstr.prototype.tick = function () {
-
   this.angle += this.rotVel;
 }
 

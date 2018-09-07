@@ -4,7 +4,6 @@ function Game() {
 }
 
 Game.prototype.loop = function () {
-
   num = Math.floor(Math.random() * 12000) + 1;
   num *= Math.floor(Math.random() * 2) == 1 ? 1 : -1;
   numy = Math.floor(Math.random() * 12000) + 1;
@@ -17,8 +16,6 @@ Game.prototype.loop = function () {
   } else {
     requestAnimationFrame(this.loop.bind(this))
   };
-
-
 }
 
 Game.prototype.ticks = function () {
@@ -132,9 +129,6 @@ Game.prototype.gameStart = function () {
   $('#health-1').removeClass("hidden");
   this.sound = music.play();
   this.sound = music.currentTime = 0;
-
-
-
 }
 Game.prototype.endScreen = function () {
   this.sound = music.pause();

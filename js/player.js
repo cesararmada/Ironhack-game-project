@@ -40,6 +40,13 @@ function Player() {
 }
 
 Player.prototype.tick = function () {
+  if (keys["w"] && keys["space"]) {
+    game.player.move()
+    game.player.accelerate()
+  } else if (keys["w"]) {
+    game.player.move();
+  }
+
   this.angle = Math.atan2(mouseY - canvasHeight * 0.5, mouseX - canvasWidth * 0.5);
   this.x -= this.dx;
   this.y -= this.dy;
@@ -66,7 +73,13 @@ Player.prototype.render = function () {
   ctx.translate(this.x, this.y);
   ctx.rotate((this.angle) + (87 * Math.PI / 180));
   this.img = new Image();
-  this.img.src = playership1;
+  if (keys["w"] && keys["space"]) {
+    this.img.src = playership3;
+  } else if (keys["w"]) {
+    this.img.src = playership2;
+  } else {
+    this.img.src = playership1;
+  }
   ctx.drawImage(this.img, -35, -35, 70, 70);
   ctx.rotate((-this.angle) - (87 * Math.PI / 180));
   ctx.translate(-this.x + this.dx, -this.y + this.dy);
@@ -82,6 +95,7 @@ Player.prototype.move = function () {
   y = y / l;
   this.dx = -(x * base);
   this.dy = -(y * base);
+  this.sound = engine.play();
 
 }
 
@@ -107,21 +121,29 @@ Player.prototype.stop = function () {
       self.dy = -(y * 8);
 
     }, 80);
+  }
+  if (this.vel == false) {
     setTimeout(function () {
       self.dx = -(x * 6);
       self.dy = -(y * 6);
 
     }, 160);
+  }
+  if (this.vel == false) {
     setTimeout(function () {
       self.dx = -(x * 4);
       self.dy = -(y * 4);
 
     }, 240);
+  }
+  if (this.vel == false) {
     setTimeout(function () {
       self.dx = -(x * 2);
       self.dy = -(y * 2);
 
     }, 320);
+  }
+  if (this.vel == false) {
     setTimeout(function () {
       self.dx = 0;
       self.dy = 0;
@@ -129,6 +151,7 @@ Player.prototype.stop = function () {
     }, 400);
   }
 }
+
 
 Player.prototype.collisionCheck = function (a, b) {
   return a.x < b.x + b.width &&

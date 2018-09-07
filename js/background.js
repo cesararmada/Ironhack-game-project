@@ -10,7 +10,6 @@ function Background(x, y, width, heigth) {
 
 
 Background.prototype.render = function () {
-
   var backgroundImg = new Image()
   backgroundImg.src = background1;
   ctx.drawImage(backgroundImg, this.x, this.y, 1200, 700);
